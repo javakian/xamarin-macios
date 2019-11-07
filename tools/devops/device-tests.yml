@@ -3,6 +3,9 @@ pool:
   demands: sh
 
 steps:
+- checkout: self
+  persistCredentials: true
+
 - bash: ./tools/devops/system-info.sh
   displayName: System Info
 
