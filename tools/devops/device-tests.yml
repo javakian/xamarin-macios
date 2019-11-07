@@ -4,13 +4,13 @@ pool:
 
 steps:
 - checkout: self
-    persistCredentials: true
+  persistCredentials: true
 
 - bash: ./tools/devops/system-info.sh
-    displayName: System Info
+  displayName: System Info
 
 - bash: ./tools/devops/fetch-maccore.sh
-    displayName: Fetch maccore
+  displayName: Fetch maccore
 
 - script: |
    set -x
