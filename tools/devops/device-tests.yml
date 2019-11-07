@@ -1,5 +1,5 @@
 pool:
-  name: DDFun-Xamarin-Mac
+  name: VSEng-Xamarin-Mac-Devices
   demands: sh
 
 steps:
