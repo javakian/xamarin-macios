@@ -1,5 +1,5 @@
 pool:
-  name: DDFun-Xamarin-Mac
+  name: "Hosted Mac Internal Mojave"
   demands: sh
 
 steps:
