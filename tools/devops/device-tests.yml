@@ -16,11 +16,6 @@ steps:
 - bash: ./tools/devops/system-info.sh
   displayName: System Info
 
-- bash: |
-    ./configure --enable-xamarin
-    make reset-maccore
-  displayName: "Fetch maccore"
-
 - script: |
    set -x
    set -e
@@ -28,7 +23,9 @@ steps:
    rm -f ~/Library/Caches/com.xamarin.provisionator/Provisions/*p12
    rm -f ~/Library/Caches/com.xamarin.provisionator/Provisions/*mobileprovision
 
-   ./../maccore/tools/install-qa-provisioning-profiles.sh -v
+   ./configure --enable-xamarin
+   git clone git@github.com:xamarin/maccore
+   ./maccore/tools/install-qa-provisioning-profiles.sh -v
   displayName: 'Add provisioning profiles'
   env:
     LOGIN_KEYCHAIN_PASSWORD: $(OSX_KEYCHAIN_PASS)
