@@ -3,14 +3,23 @@ pool:
   demands: sh
 
 steps:
+- task: InstallSSHKey@0
+  inputs:
+    hostName: $(github-hostname)
+    sshPublicKey: $(github-pubkey)
+    sshPassphrase: $(github-sec)
+    sshKeySecureFile: $(github-file)
+
 - checkout: self
   persistCredentials: true
 
 - bash: ./tools/devops/system-info.sh
   displayName: System Info
 
-- bash: ./tools/devops/fetch-maccore.sh
-  displayName: Fetch maccore
+- bash: |
+    ./configure --enable-xamarin
+    make reset-maccore
+  displayName: "Fetch maccore"
 
 - script: |
    set -x
